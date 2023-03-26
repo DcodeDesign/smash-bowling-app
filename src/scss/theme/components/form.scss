@@ -1,0 +1,25 @@
+form {
+  &.ng-invalid {
+    border: none;
+    outline: none;
+  }
+
+  &.ng-valid {
+    border: none;
+    outline: none;
+  }
+
+  input {
+    &.ng-touched {
+      &.ng-invalid {
+        border: 1px solid red;
+        outline: 1px solid red;
+      }
+
+      &.ng-valid {
+        border: 1px solid green;
+        outline: 1px solid green;
+      }
+    }
+  }
+}

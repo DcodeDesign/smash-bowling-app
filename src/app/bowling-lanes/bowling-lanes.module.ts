@@ -4,6 +4,7 @@ import { BowlingLanesRoutingModule } from './bowling-lanes-routing.module';
 import { ScoreboardComponent } from './lane/scoreboard/scoreboard.component';
 import { LaneComponent } from './lane/lane.component';
 import { FramesComponent } from './lane/frames/frames.component';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FramesComponent } from './lane/frames/frames.component';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     BowlingLanesRoutingModule
   ]
 })

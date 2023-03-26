@@ -1,4 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PlayerData } from '../services/interfaces/player-data.interface';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-lane',
@@ -6,11 +8,10 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./lane.component.scss']
 })
 export class LaneComponent implements OnInit {
-  @Input() playersData: any; // TODO: create interface
+  @Input() playersData: PlayerData[] = [];
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
   }
-
 }

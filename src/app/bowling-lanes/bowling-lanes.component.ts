@@ -11,5 +11,4 @@ export class BowlingLanesComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
