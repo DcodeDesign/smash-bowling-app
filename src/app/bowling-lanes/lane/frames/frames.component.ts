@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {PlayerData} from '../../services/interfaces/player-data.interface';
-import {FormBuilder, FormControl, Validators} from '@angular/forms';
-import {ValidationDirtyChecker} from '../../../shared/services/validation/services/ValidationDirtyChecker';
+import { Component, Input, OnInit } from '@angular/core';
+import { PlayerData } from '../../services/interfaces/player-data.interface';
+import { FormBuilder, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-frames',
@@ -16,8 +16,7 @@ export class FramesComponent implements OnInit {
   });
 
   constructor(
-    private formBuilder: FormBuilder,
-    private validationDirtyChecker: ValidationDirtyChecker
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void { }
@@ -25,11 +24,6 @@ export class FramesComponent implements OnInit {
   onSubmitForm(): void {
     if (this.form.valid) {
       console.log(this.form.value);
-    } else {
-      this.validationDirtyChecker.markControlsDirty(this.form);
     }
   }
-
-
-
 }
