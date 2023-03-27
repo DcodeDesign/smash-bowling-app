@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PlayerData } from '../services/interfaces/player-data.interface';
-import { FormBuilder } from '@angular/forms';
+import {ScoreService} from '../services/score.service';
+import {PlayerDataService} from '../services/player-data.service';
 
 @Component({
   selector: 'app-lane',
@@ -8,10 +9,18 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./lane.component.scss']
 })
 export class LaneComponent implements OnInit {
-  @Input() playersData: PlayerData[] = [];
+  public score: any;
+  public player: any;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private _scoreDataService: ScoreService, private _playerDataService: PlayerDataService ) { }
 
   ngOnInit(): void {
+    this.score = this._scoreDataService.getScore();
+    this.player = this._playerDataService.getPlayer();
+  }
+
+  addPins(pins: number) {
+    this._scoreDataService.setScore(pins);
+    this.score = this._scoreDataService.getScore();
   }
 }

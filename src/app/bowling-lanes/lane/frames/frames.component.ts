@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, Output, OnInit, EventEmitter} from '@angular/core';
 import { PlayerData } from '../../services/interfaces/player-data.interface';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -9,21 +9,27 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./frames.component.scss']
 })
 export class FramesComponent implements OnInit {
-  @Input() playersData: PlayerData[] = [];
+  @Input() player: any;
+  @Output() pins = new EventEmitter<number>();
 
   form = this.formBuilder.group({
     throw: [null, [Validators.min(0), Validators.max(10), Validators.required]]
   });
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+
   ) { }
 
   ngOnInit(): void { }
 
   onSubmitForm(): void {
     if (this.form.valid) {
-      console.log(this.form.value);
+      this.addPins(this.form.value);
     }
+  }
+
+  addPins(pins: number) {
+    this.pins.emit(pins);
   }
 }

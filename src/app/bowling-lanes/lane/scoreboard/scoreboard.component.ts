@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-scoreboard',
@@ -6,13 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./scoreboard.component.scss']
 })
 export class ScoreboardComponent implements OnInit {
-  playersScore: any[] = [];
+  @Input() score: any;
+  @Input() player: any;
   numberRounds: any[] = [];
 
   constructor() {
     this.numberRounds =  Array(10);
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { console.log(this.score) }
 
 }

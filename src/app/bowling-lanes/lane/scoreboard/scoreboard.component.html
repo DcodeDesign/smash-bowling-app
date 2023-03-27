@@ -7,16 +7,16 @@
     </td>
   </tr>
 
-  <tr *ngFor="let item of playersScore">
-    <td> {{ item.playerName }} </td>
-    <td *ngFor="let score of item.score" >
+  <tr>
+    <td> {{ player.playerName }} </td>
+    <td *ngFor="let round of score">
       <table  [border]="1" cellspacing="0" cellpadding="10">
         <tbody>
-          <tr>
-            <td *ngFor="let num of score"> {{ num }} </td>
+          <tr class="throws">
+            <td *ngFor="let item of round"> {{ item.score }} </td>
           </tr>
           <tr>
-            <td colspan="2" style="text-align: center"> {{ score[0] + score[1] }} </td>
+            <td colspan="2" style="text-align: center"> {{ round[0].score +  round[1].score}} </td>
           </tr>
         </tbody>
       </table>
