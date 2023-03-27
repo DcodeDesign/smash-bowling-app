@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { PlayerData } from './interfaces/player-data.interface';
 import { GAME_CONFIGURATIONS } from '../models/game-configurations.constant';
 
 @Injectable({
@@ -29,20 +28,23 @@ export class ScoreService{
     );
   }
 
-  getScore(): any {
-    return this._scoreData;
-  }
-
-  setScore(pins): void {
+  played(pins) {
     if (this._currentRound !== this._MAX_NUMBER_FRAMES_PER_PLAYER) {
-      this._scoreData[this._currentRound][this._currentThrow].pins = pins.throw;
-      this._scoreData[this._currentRound][this._currentThrow].score = pins.throw;
-
+      this._setScore(pins)
       this._setCurrentRound();
       this._setCurrentThrow();
     } else {
       console.log('End Game');
     }
+  }
+
+  private _setScore(pins): void {
+    this._scoreData[this._currentRound][this._currentThrow].pins = pins.throw;
+    this._scoreData[this._currentRound][this._currentThrow].score = pins.throw;
+  }
+
+  public getScore(): any {
+    return this._scoreData;
   }
 
   private _setCurrentRound() {
@@ -51,11 +53,19 @@ export class ScoreService{
     }
   }
 
+  public getCurrentRound() {
+      return this._currentRound;
+  }
+
   private _setCurrentThrow() {
     if (this._currentThrow < this._MAXIMUM_NUMBER_THROWS_PER_ROUND - 1) {
       this._currentThrow += 1;
     } else {
       this._currentThrow = 0;
     }
+  }
+
+  public getCurrentThrow() {
+    return this._currentThrow;
   }
 }
