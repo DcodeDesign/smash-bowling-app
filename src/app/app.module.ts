@@ -4,20 +4,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { BowlingLanesComponent } from './bowling-lanes/bowling-lanes.component';
 import { BowlingLanesRoutingModule } from './bowling-lanes/bowling-lanes-routing.module';
-import { BowlingLanesModule } from './bowling-lanes/bowling-lanes.module';
+import { BowlingLaneModule } from './bowling-lanes/bowling-lane.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BowlingLanesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BowlingLanesRoutingModule,
-    BowlingLanesModule
+    BowlingLaneModule
   ],
   providers: [],
   bootstrap: [AppComponent]

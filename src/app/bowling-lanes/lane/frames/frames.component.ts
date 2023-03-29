@@ -1,7 +1,5 @@
 import {Component, Input, Output, OnInit, EventEmitter} from '@angular/core';
-import { PlayerData } from '../../services/interfaces/player-data.interface';
 import { FormBuilder, Validators } from '@angular/forms';
-
 
 @Component({
   selector: 'app-frames',
@@ -10,26 +8,23 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class FramesComponent implements OnInit {
   @Input() player: any;
-  @Output() pins = new EventEmitter<number>();
+  @Output() numberDroppedPins = new EventEmitter<number>();
 
   form = this.formBuilder.group({
     throw: [null, [Validators.min(0), Validators.max(10), Validators.required]]
   });
 
-  constructor(
-    private formBuilder: FormBuilder,
-
-  ) { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void { }
 
   onSubmitForm(): void {
     if (this.form.valid) {
-      this.addPins(this.form.value);
+      this.onNumberDroppedPins(this.form.value);
     }
   }
 
-  addPins(pins: number) {
-    this.pins.emit(pins);
+  onNumberDroppedPins(pins: number) {
+    this.numberDroppedPins.emit(pins);
   }
 }

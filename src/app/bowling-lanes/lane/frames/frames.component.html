@@ -1,14 +1,11 @@
-<form style="display: flex; justify-content: center; align-items: center"
+<form class="form"
       [formGroup]="form"
       (ngSubmit)="onSubmitForm()">
 
   <label for="pins">pins: </label>
-  <input id="pins"
-         type="number"
+  <input id="pins" type="number"
          formControlName="throw"
-         [min]="0"
-         [max]="10"
-         required>
+         [min]="0" [max]="10" required>
 
   <button [disabled]="!this.form.valid" type="submit"> throw </button>
 </form>

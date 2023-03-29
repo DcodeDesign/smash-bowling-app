@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BowlingLanesRoutingModule } from './bowling-lanes-routing.module';
+import { SharedModule } from '../shared/shared.module';
+
 import { ScoreboardComponent } from './lane/scoreboard/scoreboard.component';
 import { LaneComponent } from './lane/lane.component';
 import { FramesComponent } from './lane/frames/frames.component';
-import {SharedModule} from '../shared/shared.module';
-import {ScoreService} from './services/score.service';
-import {PlayerDataService} from './services/player-data.service';
+
+import { GameService } from './services/game.service';
 
 @NgModule({
   declarations: [
@@ -23,8 +24,7 @@ import {PlayerDataService} from './services/player-data.service';
     BowlingLanesRoutingModule
   ],
   providers: [
-    ScoreService,
-    PlayerDataService
+    GameService
   ]
 })
-export class BowlingLanesModule { }
+export class BowlingLaneModule { }

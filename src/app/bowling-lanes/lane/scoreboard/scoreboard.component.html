@@ -1,4 +1,4 @@
-<table style="display: flex; justify-content: center; align-items: center">
+<table class="scoreboard" style="display: flex; justify-content: center; align-items: center">
   <tbody>
   <tr>
     <th> </th>
@@ -8,7 +8,7 @@
   </tr>
 
   <tr>
-    <td> {{ player.playerName }} </td>
+    <td> {{ player.name }} </td>
     <td *ngFor="let round of score">
       <table  [border]="1" cellspacing="0" cellpadding="10">
         <tbody>
