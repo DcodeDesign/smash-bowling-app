@@ -1,0 +1,29 @@
+<div class="scoreboard">
+  <div class="container-score-frames"
+       [class.highlight]="(index + 1) === currentRound"
+       *ngFor="let frame of scoreFrames; let index = index">
+    <div class="round">
+      <span>{{ index + 1 }}</span>
+    </div>
+
+    <div class="container-scores">
+      <div class="content-score" *ngFor="let item of frame.scores">
+        <ng-container [ngSwitch]="item.term">
+          <ng-container *ngSwitchCase="technicalTerms.SPARE">
+            <span> / </span>
+          </ng-container>
+          <ng-container *ngSwitchCase="technicalTerms.STRIKE">
+            <span> x </span>
+          </ng-container>
+          <ng-container *ngSwitchDefault>
+            <span>{{ item.score }}</span>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="total-score">
+       <span>{{ frame.totalScore }}</span>
+    </div>
+  </div>
+</div>

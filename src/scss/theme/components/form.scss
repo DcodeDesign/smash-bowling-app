@@ -1,25 +1,42 @@
-form {
-  &.ng-invalid {
-    border: none;
-    outline: none;
-  }
+@import '../common/_variables';
 
-  &.ng-valid {
-    border: none;
-    outline: none;
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  label {
+    color: $blue-dark;
+    font-weight: bold;
+
+    margin-right: 5px;
   }
 
   input {
-    &.ng-touched {
-      &.ng-invalid {
-        border: 1px solid red;
-        outline: 1px solid red;
-      }
+    outline: none;
 
-      &.ng-valid {
-        border: 1px solid green;
-        outline: 1px solid green;
+    color: $blue-dark;
+    font-size:16px;
+
+    border:none;
+    border-bottom: 2px solid $blue-medium;
+
+    margin: 0 15px;
+
+    min-width: 50px;
+
+    &.ng-dirty {
+      &.ng-invalid {
+        color: red;
+        border: none;
+        border-bottom: 2px solid red;
       }
+    }
+
+    &.ng-valid {
+      color: $blue-medium;
+      outline: none;
+      border-bottom: 2px solid $blue-medium;
     }
   }
 }

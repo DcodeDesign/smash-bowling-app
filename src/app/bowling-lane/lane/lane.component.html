@@ -1,0 +1,28 @@
+<div class="bowling-lane">
+  <div class="">
+    <app-scoreboard [scoreFrames]="score" [currentRound]=currentRound></app-scoreboard>
+  </div>
+
+  <div class="mt-3 d-flex-center">
+    <ng-template [ngIf]="errorMessage">
+      <p class="text-infos" style="color: red">{{ errorMessage }}</p>
+    </ng-template>
+
+    <ng-template [ngIf]="!isEndGame" [ngIfElse]="end">
+      <p class="text-infos">Round: {{ currentRound }} | throw: {{ currentThrow }}</p>
+    </ng-template>
+    <ng-template #end>
+      <p class="text-infos">End Game</p>
+    </ng-template>
+  </div>
+
+  <div>
+    <app-frames *ngIf="!isEndGame" (numberDroppedPins)="onNumberDroppedPins($event)"
+                [firstThrows]="firstThrows"></app-frames>
+  </div>
+
+  <div class="mt-5 d-flex-center">
+    <button class="btn-run"
+            (click)="restart()"> restart </button>
+  </div>
+</div>

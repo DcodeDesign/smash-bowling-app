@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BowlingLanesRoutingModule } from './bowling-lanes-routing.module';
-import { SharedModule } from '../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { BowlingLaneRoutingModule } from './bowling-lane-routing.module';
 
 import { ScoreboardComponent } from './lane/scoreboard/scoreboard.component';
 import { LaneComponent } from './lane/lane.component';
@@ -20,8 +21,8 @@ import { GameService } from './services/game.service';
   ],
   imports: [
     CommonModule,
-    SharedModule,
-    BowlingLanesRoutingModule
+    ReactiveFormsModule,
+    BowlingLaneRoutingModule,
   ],
   providers: [
     GameService

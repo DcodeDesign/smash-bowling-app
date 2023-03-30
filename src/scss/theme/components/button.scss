@@ -1,0 +1,56 @@
+@import '../common/_variables';
+
+.btn-run {
+  color: $blue-medium;
+  font-family: "Avenir Next LT W01 Bold",sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  text-decoration: none;
+
+  background-color: white;
+
+  border: 1px solid $blue-medium;
+  box-sizing: border-box;
+
+  padding: 8px 11px;
+  position: relative;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn-run:hover,
+.btn-run:active {
+  outline: 0;
+}
+
+.btn-run:hover {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btn-run:before {
+  content: "";
+  height: calc(100% + 3px);
+  width: 100%;
+
+  background-color: $light-blue;
+  transition: background-color 300ms ease-in;
+
+  position: absolute;
+  right: -7px;
+  top: -9px;
+  z-index: -1;
+}
+
+.btn-run:hover:before {
+  background-color: darken($light-blue, 10%);
+}
+
+@media (min-width: 768px) {
+  .btn-run {
+    padding: 8px 18px;
+  }
+}

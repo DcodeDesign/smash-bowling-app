@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { BowlingLanesRoutingModule } from './bowling-lanes/bowling-lanes-routing.module';
-import { BowlingLaneModule } from './bowling-lanes/bowling-lane.module';
+import { BowlingLaneRoutingModule } from './bowling-lane/bowling-lane-routing.module';
+import { BowlingLaneModule } from './bowling-lane/bowling-lane.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,7 @@ import { BowlingLaneModule } from './bowling-lanes/bowling-lane.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BowlingLanesRoutingModule,
+    BowlingLaneRoutingModule,
     BowlingLaneModule
   ],
   providers: [],

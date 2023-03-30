@@ -1,0 +1,18 @@
+<div class="d-flex-center">
+  <p class="text-center mt-4 text-infos">
+    <strong>{{ rest }}</strong> pins left
+  </p>
+</div>
+
+<form class="d-flex-center"
+      [formGroup]="form"
+      (ngSubmit)="onSubmitForm()">
+
+  <label class="text-infos" for="pins">Number: </label>
+  <input id="pins" class="input-pins" type="number"
+         placeholder="pins"
+         formControlName="count"
+         [min]="0" [max]="rest" required>
+
+  <button class="btn-run" type="submit"> drop </button>
+</form>

@@ -1,0 +1,86 @@
+@import '../../../../scss/theme/common/_variables';
+
+$expansion-size: 1.4;
+
+.scoreboard {
+  margin-top: 50px;
+  color: $blue-medium;
+
+  position:relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  .container-score-frames {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    margin-top: 20px;
+
+    position:relative;
+
+    &:before {
+      content: "";
+
+      height: calc(69% + 3px);
+      width: 100%;
+      background-color: $light-blue;
+      transition: background-color 300ms ease-in;
+
+      position: absolute;
+      right: -8px;
+      bottom: -19px;
+
+      z-index: -1;
+    }
+
+    .round {
+      display: flex;
+    }
+
+    .container-scores {
+      display: flex;
+      width: 50px * $expansion-size;
+      height: 25px * $expansion-size;
+    }
+
+    .content-score {
+      width: 25px * $expansion-size;
+      height: 25px * $expansion-size;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $white;
+
+      border: 1px solid $light-blue;
+    }
+
+    .total-score {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-wrap: wrap;
+
+      background-color: $white;
+
+      border: 1px solid $blue-medium;
+      width: 50px * $expansion-size;
+      height: 50px * $expansion-size;
+    }
+
+    &.highlight {
+      * {
+        background-color: $light-blue;
+        border-color: $blue-medium;
+      }
+    }
+  }
+}
+
