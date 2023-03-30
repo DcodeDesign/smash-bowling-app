@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { GameService} from '../services/game.service';
 import { ScoreFrameInterface, ScoreInterface } from '../models/scores.interface';
 import { ScoreboardInterface } from '../models/scoreboard.interface';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-lane',
@@ -21,7 +20,7 @@ export class LaneComponent implements OnInit {
   private lastFrameScore: ScoreFrameInterface;
   public firstThrows: ScoreInterface;
 
-  constructor(private _gameService: GameService, private router: Router) { }
+  constructor(private _gameService: GameService) { }
 
   ngOnInit() {
     this.parseScoreGame();

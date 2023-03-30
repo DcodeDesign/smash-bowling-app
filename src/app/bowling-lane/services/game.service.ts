@@ -52,7 +52,7 @@ export class GameService {
   updateScoreboard(pins: number): ScoreboardInterface {
     if(!Common.isBetween(pins, this._MIN_VALUE, this._MAX_NUMBER_PINS)) {
       this._errorMessage = this._defaultErrorMessage;
-      console.log(`updateScoreboard, number pins must be isBetween ${this._MIN_VALUE} and ${this._MAX_NUMBER_PINS}`);
+      console.warn(`updateScoreboard, number pins must be isBetween ${this._MIN_VALUE} and ${this._MAX_NUMBER_PINS}`);
     }
 
     if (this._errorMessage || this._isEndGame) return;
@@ -89,7 +89,7 @@ export class GameService {
   private _updateCurrentThrow(currentThrow) {
     if(!Common.isBetween(currentThrow, this._MIN_VALUE, this._MAX_NUMBER_THROWS_PER_ROUND)) {
       this._errorMessage = this._defaultErrorMessage;
-      console.log(`updateCurrentThrow, currentThrow must be isBetween ${this._MIN_VALUE} and ${this._MAX_NUMBER_THROWS_PER_ROUND}`);
+      console.warn(`updateCurrentThrow, currentThrow must be isBetween ${this._MIN_VALUE} and ${this._MAX_NUMBER_THROWS_PER_ROUND}`);
     }
 
     if (this._errorMessage) return;
