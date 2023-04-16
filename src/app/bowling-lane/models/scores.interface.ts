@@ -1,6 +1,6 @@
 export interface ScoreFrameInterface {
   totalScore: number,
-  scores: ScoreInterface[]
+  scoreFrames: ScoreInterface[]
 }
 
 export interface ScoreInterface {

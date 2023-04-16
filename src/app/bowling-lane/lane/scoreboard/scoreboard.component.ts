@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ScoreFrameInterface } from '../../models/scores.interface';
 import { TechnicalTermsEnum } from '../../models/technicalTerms.enum';
 

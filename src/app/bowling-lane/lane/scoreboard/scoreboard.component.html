@@ -7,7 +7,7 @@
     </div>
 
     <div class="container-scores">
-      <div class="content-score" *ngFor="let item of frame.scores">
+      <div class="content-score" *ngFor="let item of frame.scoreFrames">
         <ng-container [ngSwitch]="item.term">
           <ng-container *ngSwitchCase="technicalTerms.SPARE">
             <span> / </span>

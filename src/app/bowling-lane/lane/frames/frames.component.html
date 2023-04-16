@@ -14,5 +14,5 @@
          formControlName="count"
          [min]="0" [max]="rest" required>
 
-  <button class="btn-run" type="submit"> drop </button>
+  <button class="btn-run" type="submit" [disabled]="form.invalid"> drop </button>
 </form>

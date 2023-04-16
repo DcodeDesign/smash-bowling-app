@@ -1,4 +1,3 @@
-
 import { ScoreFrameInterface } from './scores.interface';
 
 export interface ScoreboardInterface {

@@ -31,7 +31,7 @@ export class FramesComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     const lastThrowsValue = changes.firstThrows;
-    if (!!lastThrowsValue.currentValue) {
+    if (!!lastThrowsValue?.currentValue) {
       this.rest = lastThrowsValue.currentValue.rest
       this.form.controls.count.setValidators([Validators.min(0), Validators.max(lastThrowsValue.currentValue.rest), Validators.required])
       this.form.controls.count.updateValueAndValidity();
@@ -50,7 +50,9 @@ export class FramesComponent implements OnInit, OnChanges {
   }
 
   onNumberDroppedPins(pins: { count: number }) {
-    this.numberDroppedPins.emit(pins.count);
+    if (this.form.valid) {
+      this.numberDroppedPins.emit(pins.count);
+    }
   }
 
 }

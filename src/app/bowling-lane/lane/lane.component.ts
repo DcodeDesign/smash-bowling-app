@@ -32,6 +32,7 @@ export class LaneComponent implements OnInit {
   }
 
   public parseScoreGame() {
+    if (!this.scoreboard) return;
     this.scoreboard = this._gameService.scoreboard;
 
     this.currentRound = this.scoreboard.currentRound;
@@ -41,8 +42,8 @@ export class LaneComponent implements OnInit {
     this.errorMessage = this.scoreboard.error;
 
     this.score = this.scoreboard.scores;
-    this.lastFrameScore = this.score[this.currentRound - 1]
-    this.firstThrows = this.lastFrameScore.scores[0]
+    this.lastFrameScore = this.score[this.currentRound - 1];
+    this.firstThrows = this.lastFrameScore.scoreFrames[0];
   }
 
   restart () {

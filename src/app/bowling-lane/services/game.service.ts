@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Common} from 'src/app/bowling-lane/utilis/common';
-
-import { GAME_CONFIGURATIONS } from '../models/game-configurations.constant';
-
+import {GAME_CONFIGURATIONS} from '../models/game-configurations.constant';
 import { ScoreFrameInterface } from '../models/scores.interface';
-
 import { ScoreboardInterface } from '../models/scoreboard.interface';
 import { TechnicalTermsEnum } from '../models/technicalTerms.enum';
+
 
 @Injectable({
   providedIn: 'root'
@@ -38,15 +36,22 @@ export class GameService {
     this._isEndGame = false;
     this._scores = Array.from(
       { length: this._MAX_NUMBER_FRAMES_PER_PLAYER },
-      _ => {
+      () => {
         return {
           totalScore: 0,
-          scores: Array.from(
-          { length: this._MAX_NUMBER_THROWS_PER_ROUND },
-          () => ({ pins: 0, score: 0, rest: this._MAX_NUMBER_PINS, term: null})
-        )};
+          scoreFrames: Array.from(
+            { length: this._MAX_NUMBER_THROWS_PER_ROUND },
+            () => ({
+              pins: 0,
+              score: 0,
+              rest: this._MAX_NUMBER_PINS,
+              term: null
+            })
+          )
+        };
       }
     );
+    this._lastScore = 0;
   }
 
   updateScoreboard(pins: number): ScoreboardInterface {
@@ -74,6 +79,38 @@ export class GameService {
     };
   }
 
+  private _setNewScore(pins) {
+    const scoreFrame = this.scoreboard.scores[this._currentRound - 1];
+    const score = scoreFrame.scoreFrames[0];
+    const totalPins = score.pins + pins;
+    const rest = score.rest - pins;
+    let term: string;
+
+    if(pins > score.rest) {
+      console.warn('Error, number of pins must be smaller than the rest of the keel.')
+    }
+
+    if (
+      this._currentThrow === this._MAX_NUMBER_THROWS_PER_ROUND &&
+      totalPins === this._MAX_NUMBER_PINS
+    ) {
+      term = TechnicalTermsEnum.SPARE
+    }
+    else if (
+      this._currentThrow === 1 &&
+      totalPins === this._MAX_NUMBER_PINS
+    ) {
+      term = TechnicalTermsEnum.STRIKE
+    }
+    else {
+      term = TechnicalTermsEnum.HOLE;
+    }
+
+    scoreFrame.totalScore = this._lastScore + pins;
+    scoreFrame.scoreFrames[this._currentThrow - 1] = { pins, score: pins, rest, term }
+    this._lastScore = scoreFrame.totalScore;
+  }
+
   private _updateCurrentRound(currentRound: number) {
     if(!Common.isBetween(currentRound, this._MIN_VALUE, this._MAX_NUMBER_FRAMES_PER_PLAYER)) {
       this._errorMessage = this._defaultErrorMessage;
@@ -95,34 +132,6 @@ export class GameService {
     if (this._errorMessage) return;
 
     this._currentThrow = currentThrow;
-  }
-
-  private _setNewScore(pins) {
-    const scoreFrame = this.scoreboard.scores[this._currentRound - 1];
-    const score = scoreFrame.scores[0];
-    const totalPins = score.pins + pins;
-    const rest = score.rest - pins;
-    let term: string;
-
-    if (
-      this._currentThrow === this._MAX_NUMBER_THROWS_PER_ROUND &&
-      totalPins === this._MAX_NUMBER_PINS
-    ) {
-      term = TechnicalTermsEnum.SPARE
-    }
-    else if (
-      this._currentThrow === 1 &&
-      totalPins === this._MAX_NUMBER_PINS
-    ) {
-      term = TechnicalTermsEnum.STRIKE
-    }
-    else {
-      term = TechnicalTermsEnum.HOLE;
-    }
-
-    scoreFrame.totalScore = this._lastScore + totalPins;
-    scoreFrame.scores[this._currentThrow - 1] = { pins, score: pins, rest, term }
-    this._lastScore = scoreFrame.totalScore;
   }
 
   private _incrementRoundsAndThrows(pins: number) {
