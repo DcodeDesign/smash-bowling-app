@@ -32,7 +32,6 @@ export class LaneComponent implements OnInit {
   }
 
   public parseScoreGame() {
-    if (!this.scoreboard) return;
     this.scoreboard = this._gameService.scoreboard;
 
     this.currentRound = this.scoreboard.currentRound;
